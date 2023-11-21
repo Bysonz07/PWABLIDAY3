@@ -3,6 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import FetchApi from './components/FetchApi.vue'
 import CRUDApi from './components/CRUDApi.vue';
 import FetchBlobApi from './components/FetchBlobApi.vue';
+import LoadManyImages from './components/LoadManyImages.vue';
 </script>
 
 <template>
@@ -17,7 +18,7 @@ import FetchBlobApi from './components/FetchBlobApi.vue';
   <!-- <HelloWorld msg="Vite + Vue" /> -->
   <FetchApi />
   <CRUDApi />
-  <FetchBlobApi />
+  <LoadManyImages />
 </template>
 
 <style scoped>

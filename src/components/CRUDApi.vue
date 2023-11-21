@@ -11,6 +11,9 @@
             <li v-for="customer in customers" :key="customer.ssn">
                 {{ customer.name }} - {{ customer.email }}
                 {{ customer.blobImg }}
+                <div style="float: left;">
+                    <img :src="blobImg" />
+                </div>
             </li>
         </ul>
 
@@ -30,7 +33,6 @@ for (var i = 0; i < data.length; i += 2) {
 // Make a Blob from the bytes
 var blob = new Blob([bytes], { type: 'image/bmp' });
 
-
 const dbName = "the_name";
 const customerToAdd = { ssn: "666-66-6666", name: "Alice", age: 28, email: "alice@example.com", blobImg: blob };
 const keyToUpdate = "666-66-6666";
@@ -41,7 +43,7 @@ const addedData = ref(null);
 const updatedData = ref(null);
 const deletedData = ref(null);
 const customers = ref([]);
-let blobImg = ref()
+
 const addData = () => {
     const request = indexedDB.open(dbName, 2);
 
@@ -56,6 +58,16 @@ const addData = () => {
         objectStore.createIndex("name", "name", { unique: false });
         objectStore.createIndex("email", "email", { unique: true });
         objectStore.createIndex("blobImg", "blobImg", { unique: false })
+
+
+        const addTransaction = db.transaction("customers", "readwrite");
+        const customerObjectStore = addTransaction.objectStore("customers");
+
+        const addRequest = customerObjectStore.add(customerToAdd);
+        addRequest.onsuccess = (event) => {
+            console.log("Data added successfully");
+            addedData.value = "Yes";
+        };
     };
 
     request.onsuccess = (event) => {
