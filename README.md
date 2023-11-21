@@ -1,7 +1,7 @@
-# Vue 3 + Vite
+# Task Submission Day 3 PWA - BLI NOV 2023
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Created By: Difa Naufal Pratama
+It can upload image and convert it into Blob
+Load Image by access the ID
+And also remove the image by ID
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
