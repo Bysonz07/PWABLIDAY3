@@ -7,11 +7,16 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      registerType: 'autoUpdate',
+      // strategies: 'generateSW',
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.js',
       workbox: {
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/pokeapi.co\/api\/v2\/pokemon$/,
-            handler: 'NetworkFirst',
+            handler: 'NetworkOnly',
             options: {
               cacheName: 'auth-user-cache',
               expiration: {
@@ -20,16 +25,18 @@ export default defineConfig({
               },
               cacheableResponse: {
                 statuses: [0, 200]
+              },
+              backgroundSync: {
+                name: 'myQueueName',
+                options: {
+                  maxRetentionTime: 24 * 60
+                }
               }
             }
           },
         ],
       },
-      registerType: 'autoUpdate',
-      // strategies: 'generateSW',
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'sw.js',
+
       devOptions: {
         enabled: true
       },

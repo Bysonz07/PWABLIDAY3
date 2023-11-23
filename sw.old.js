@@ -1,18 +1,15 @@
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { cacheNames, clientsClaim } from 'workbox-core';
+import { ExpirationPlugin } from 'workbox-expiration';
 import { registerRoute, setCatchHandler, setDefaultHandler } from 'workbox-routing';
-// import { StrategyHandler } from 'workbox-strategies';
-import { NetworkFirst, NetworkOnly, Strategy } from 'workbox-strategies';
-// import { cache, skipWaiting } from 'workbox-sw';
-import { BackgroundSyncPlugin } from 'workbox-background-sync';
-import { Queue } from 'workbox-background-sync';
-
+import { CacheFirst, NetworkFirst, NetworkOnly, Strategy } from 'workbox-strategies';
+import { BackgroundSyncPlugin, Queue } from 'workbox-background-sync';
 // Give JavaScript the correct global.
 self.skipWaiting();
 
 const queue = new Queue('myQueueName');
 
-
-const bgSyncPlugin = new BackgroundSyncPlugin('myQueueWildan', {
+const bgSyncPlugin = new BackgroundSyncPlugin('bysonQueue', {
   maxRetentionTime: 24 * 60, // Retry for max of 24 Hours (specified in minutes)
 });
 
@@ -35,7 +32,7 @@ const statusPlugin = {
 
 const data = {
   race: false,
-  debug: true,
+  debug: false,
   credentials: 'same-origin',
   networkTimeoutSeconds: 0,
   fallback: 'index.html'
@@ -162,17 +159,17 @@ self.addEventListener("sync", async (event) => {
       details: 'This is a critical update. Please update your app.'
     }
   });
-  // broadcast.postMessage({ type: 'MSG_ID', });
+  broadcast.postMessage({ type: 'MSG_ID', });
   // Check if the sync event is for the sync tag we are interested in.
   // if (event.tag !== "my-sync-tag") {
   //   return;
   // }
 
-  // // Get the queue of pending requests.
-  // const queue = new workbox.backgroundSync.Queue("my-sync-queue");
+  // Get the queue of pending requests.
+  const queue = new workbox.backgroundSync.Queue("my-sync-queue");
 
-  // // Replay all of the pending requests.
-  // await queue.replayRequests();
+  // Replay all of the pending requests.
+  await queue.replayRequests();
 });
 
 self.addEventListener("push", async (event) => {
@@ -193,9 +190,20 @@ registerRoute(
   buildStrategy()
 );
 
-// Define your runtime caching strategy here
 registerRoute(
   /^https:\/\/pokeapi.co\/api\/v2\/pokemon$/,
+  // new CacheFirst({
+  //   cacheName: 'auth-user-cache',
+  //   plugins: [
+  //     new ExpirationPlugin({
+  //       maxEntries: 10,
+  //       maxAgeSeconds: 3, // 3 seconds for development, adjust for production
+  //     }),
+  //     new CacheableResponsePlugin({
+  //       statuses: [0, 200],
+  //     }),
+  //   ],
+  // })
   new NetworkOnly({
     plugins: [
       bgSyncPlugin,

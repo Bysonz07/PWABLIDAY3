@@ -4,21 +4,31 @@ import FetchApi from './components/FetchApi.vue'
 import CRUDApi from './components/CRUDApi.vue';
 import FetchBlobApi from './components/FetchBlobApi.vue';
 import LoadManyImages from './components/LoadManyImages.vue';
+import BackGroundSyncEg from './components/BackGroundSyncEg.vue';
+import MediaQueryBasicNativeCss from './components/MediaQueryBasicNativeCss.vue';
+import ExampleVuetify from './components/ExampleVuetify.vue';
+import PushNotification from './components/PushNotification.vue';
+import PusNotification2 from './components/PusNotification2.vue';
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
+  <a href="https://vitejs.dev" target="_blank">
+    <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
-  <FetchApi />
-  <CRUDApi />
-  <LoadManyImages />
+  <!-- <FetchApi />-->
+  <!-- <CRUDApi />-->
+  <!--<LoadManyImages />-->
+  <!-- <BackGroundSyncEg />
+      <MediaQueryBasicNativeCss />
+      <ExampleVuetify />
+      <PushNotification /> -->
+  <PusNotification2 />
 </template>
 
 <style scoped>
