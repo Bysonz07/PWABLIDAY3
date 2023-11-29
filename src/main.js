@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+import Camera from './components/dayFiveTask/Camera.vue';
+// import CameraIbrahim from './components/dayFiveTask/CameraIbrahim.vue';
 import { registerSW } from 'virtual:pwa-register'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -25,4 +27,4 @@ const updateSW = registerSW({
 })
 registerSW({ immediate: true })
 
-createApp(App).use(vuetify).mount('#app')
+createApp(Camera).use(vuetify).mount('#app')

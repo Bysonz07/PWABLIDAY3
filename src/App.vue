@@ -9,12 +9,14 @@ import MediaQueryBasicNativeCss from './components/MediaQueryBasicNativeCss.vue'
 import ExampleVuetify from './components/ExampleVuetify.vue';
 import PushNotification from './components/PushNotification.vue';
 import PusNotification2 from './components/PusNotification2.vue';
+import Home from './components/dayFiveTask/Home.vue';
+import Camera from './components/dayFiveTask/Camera.vue';
 </script>
 
 <template>
   <div>
-  <a href="https://vitejs.dev" target="_blank">
-    <img src="/vite.svg" class="logo" alt="Vite logo" />
+    <a href="https://vitejs.dev" target="_blank">
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
@@ -25,10 +27,12 @@ import PusNotification2 from './components/PusNotification2.vue';
   <!-- <CRUDApi />-->
   <!--<LoadManyImages />-->
   <!-- <BackGroundSyncEg />
-      <MediaQueryBasicNativeCss />
-      <ExampleVuetify />
-      <PushNotification /> -->
-  <PusNotification2 />
+            <MediaQueryBasicNativeCss />
+            <ExampleVuetify />
+            <PushNotification /> -->
+  <!-- <PusNotification2 /> -->
+  <!-- <Home /> -->
+  <Camera />
 </template>
 
 <style scoped>
